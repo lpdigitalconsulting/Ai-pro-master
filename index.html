@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Pro Master — Transformación con Inteligencia Artificial · LP Digital Consulting</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>AI Pro Master — Inteligencia Artificial Empresarial · LP Digital Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#020A12;
@@ -22,577 +22,621 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--ff2);background:var(--bg);color:var(--white);overflow-x:hidden;}
 
-#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.glow{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(140px);}
-.g1{width:900px;height:900px;background:rgba(0,229,255,0.055);top:-300px;right:-200px;animation:gDrift1 12s ease-in-out infinite;}
-.g2{width:600px;height:600px;background:rgba(240,165,0,0.05);bottom:-150px;left:-150px;animation:gDrift2 15s ease-in-out infinite;}
-.g3{width:500px;height:500px;background:rgba(0,229,165,0.035);top:40%;left:30%;animation:gDrift3 18s ease-in-out infinite;}
-@keyframes gDrift1{0%,100%{transform:translate(0,0);}50%{transform:translate(-60px,40px);}}
-@keyframes gDrift2{0%,100%{transform:translate(0,0);}50%{transform:translate(50px,-30px);}}
-@keyframes gDrift3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,60px) scale(1.1);}}
+/* CANVAS */
+#canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1;}
 
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:300;
-  padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;
-  background:rgba(2,10,18,0.8);backdrop-filter:blur(32px);
-  border-bottom:1px solid rgba(0,229,255,0.07);
-}
-.logo{font-family:var(--ff1);font-size:1.1rem;font-weight:800;letter-spacing:-.01em;text-decoration:none;color:var(--white);}
+/* GLOWS */
+.glow{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(160px);}
+.g1{width:800px;height:800px;background:rgba(0,229,255,.06);top:-250px;right:-150px;animation:gd1 14s ease-in-out infinite;}
+.g2{width:600px;height:600px;background:rgba(240,165,0,.05);bottom:-100px;left:-100px;animation:gd2 17s ease-in-out infinite;}
+.g3{width:450px;height:450px;background:rgba(0,229,165,.04);top:45%;left:35%;animation:gd3 20s ease-in-out infinite;}
+@keyframes gd1{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,35px);}}
+@keyframes gd2{0%,100%{transform:translate(0,0);}50%{transform:translate(45px,-28px);}}
+@keyframes gd3{0%,100%{transform:translate(0,0)scale(1);}50%{transform:translate(-35px,55px)scale(1.12);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(2,10,18,.85);backdrop-filter:blur(28px);border-bottom:1px solid rgba(0,229,255,.07);}
+.logo{font-family:var(--ff1);font-size:1.1rem;font-weight:800;text-decoration:none;color:var(--white);}
 .logo em{font-style:normal;color:var(--cyan);}
-.nav-r{display:flex;align-items:center;gap:.6rem;}
-.nav-pill{font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.36rem .8rem;border-radius:50px;border:1px solid transparent;transition:all .2s;display:none;}
-@media(min-width:900px){.nav-pill{display:inline-flex;}}
-.nav-pill:hover{border-color:rgba(0,229,255,.2);color:var(--white);}
-.nav-back{font-size:.68rem;font-weight:600;color:rgba(238,244,255,.55);text-decoration:none;padding:.4rem 1rem;border-radius:50px;border:1px solid rgba(0,229,255,.15);transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
-.nav-back:hover{border-color:rgba(0,229,255,.4);color:var(--white);}
-.nav-cta{font-family:var(--ff1);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-decoration:none;background:linear-gradient(135deg,var(--gold),#FFD166);color:#0a0500;padding:.52rem 1.3rem;border-radius:50px;transition:all .2s;white-space:nowrap;}
-.nav-cta:hover{box-shadow:0 0 28px rgba(240,165,0,.5);transform:translateY(-1px);}
-
-/* HERO */
-#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:9rem 2rem 6rem;}
-.hero-inner{max-width:860px;margin:0 auto;}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(240,165,0,.06);border:1px solid rgba(240,165,0,.3);border-radius:50px;padding:.5rem 1.25rem;margin-bottom:2.5rem;animation:badgePop .8s cubic-bezier(.34,1.56,.64,1) both;}
-@keyframes badgePop{from{opacity:0;transform:scale(.8) translateY(10px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(240,165,0,.4);}50%{opacity:.5;box-shadow:0 0 0 6px rgba(240,165,0,0);}}
-.hero-kicker{font-family:var(--ff1);font-size:clamp(.65rem,.85vw,.8rem);font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;animation:fadeUp .8s .15s both;}
-h1{font-family:var(--ff1);font-size:clamp(3.2rem,7.5vw,7rem);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeUp .9s .25s both;}
-.h1-outline{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(238,244,255,.15);}
-.h1-grad{display:block;background:linear-gradient(100deg,var(--cyan) 0%,var(--green) 50%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite;}
-@keyframes shimmer{to{background-position:200% center;}}
-.h1-solid{display:block;}
-.hero-sub{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:300;line-height:1.85;color:rgba(238,244,255,.55);max-width:620px;margin:0 auto 3rem;animation:fadeUp .9s .35s both;}
-.hero-sub strong{color:var(--white);font-weight:500;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:4rem;animation:fadeUp .9s .45s both;}
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ff1);font-size:.78rem;font-weight:700;letter-spacing:.05em;border-radius:50px;text-decoration:none;cursor:pointer;border:none;padding:.9rem 2rem;transition:all .3s;position:relative;overflow:hidden;}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);opacity:0;transition:.3s;}
-.btn:hover::after{opacity:1;}
-.btn-gold{background:linear-gradient(135deg,#F0A500,#FFD166);color:#0a0500;box-shadow:0 8px 32px rgba(240,165,0,.25);}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(240,165,0,.4);}
-.btn-ghost{background:rgba(255,255,255,.04);color:var(--white);border:1px solid rgba(0,229,255,.2);}
-.btn-ghost:hover{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.5);}
-.hero-metrics{display:flex;gap:0;justify-content:center;border:1px solid rgba(0,229,255,.1);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.02);backdrop-filter:blur(10px);max-width:700px;margin:0 auto;animation:fadeUp .9s .55s both;}
-.hm{flex:1;padding:1.5rem 1rem;text-align:center;border-right:1px solid rgba(0,229,255,.08);transition:background .3s;}
-.hm:last-child{border-right:none;}
-.hm:hover{background:rgba(0,229,255,.04);}
-.hm-n{font-family:var(--ff1);font-size:2.2rem;font-weight:800;line-height:1;color:var(--cyan);}
-.hm-n.gold{color:var(--gold);}
-.hm-n.grn{color:var(--green);}
-.hm-l{font-size:.62rem;font-weight:400;letter-spacing:.06em;color:var(--muted);margin-top:6px;}
+.nav-r{display:flex;align-items:center;gap:.5rem;}
+.npill{font-size:.63rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.35rem .8rem;border-radius:50px;border:1px solid transparent;transition:all .2s;display:none;}
+@media(min-width:860px){.npill{display:inline-flex;}}
+.npill:hover{border-color:rgba(0,229,255,.22);color:var(--white);}
+.nback{font-size:.68rem;font-weight:600;color:rgba(238,244,255,.55);text-decoration:none;padding:.4rem 1rem;border-radius:50px;border:1px solid rgba(0,229,255,.15);transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+.nback:hover{border-color:rgba(0,229,255,.4);color:var(--white);}
+.ncta{font-family:var(--ff1);font-size:.69rem;font-weight:700;letter-spacing:.07em;text-decoration:none;background:linear-gradient(135deg,var(--gold),#FFD166);color:#06090d;padding:.5rem 1.25rem;border-radius:50px;transition:all .2s;white-space:nowrap;}
+.ncta:hover{box-shadow:0 0 28px rgba(240,165,0,.5);transform:translateY(-1px);}
 
 /* TICKER */
-.ticker-wrap{position:relative;z-index:1;overflow:hidden;padding:.8rem 0;border-top:1px solid rgba(0,229,255,.06);border-bottom:1px solid rgba(0,229,255,.06);background:rgba(0,229,255,.018);}
-.ticker{display:flex;animation:tick 30s linear infinite;width:max-content;}
+.ticker-wrap{position:relative;z-index:1;overflow:hidden;padding:.75rem 0;border-top:1px solid rgba(0,229,255,.06);border-bottom:1px solid rgba(0,229,255,.06);background:rgba(0,229,255,.016);margin-top:59px;}
+.ticker{display:flex;animation:tick 28s linear infinite;width:max-content;}
 @keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.ticker-item{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(90,112,144,.8);white-space:nowrap;padding:0 2.5rem;display:flex;align-items:center;gap:.75rem;}
-.ticker-item::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.6;}
+.tki{font-size:.63rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,101,128,.85);white-space:nowrap;padding:0 2.5rem;display:flex;align-items:center;gap:.75rem;}
+.tki::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.65;}
 
-/* SECTIONS */
-.section{position:relative;z-index:1;}
-.wrap{max-width:1200px;margin:0 auto;padding:6rem 2rem;position:relative;z-index:1;}
-.wrap-sm{max-width:880px;margin:0 auto;padding:6rem 2rem;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;}
-.eyebrow::before{content:"";width:20px;height:1px;background:var(--cyan);}
-.eyebrow.gold{color:var(--gold);}
-.eyebrow.gold::before{background:var(--gold);}
-.eyebrow.grn{color:var(--green);}
-.eyebrow.grn::before{background:var(--green);}
-h2{font-family:var(--ff1);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;}
-.section-sub{font-size:1rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.8;max-width:580px;margin-bottom:3.5rem;}
+/* HERO */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 5rem;}
+.hi{max-width:860px;margin:0 auto;width:100%;}
+.badge{display:inline-flex;align-items:center;gap:9px;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(240,165,0,.06);border:1px solid rgba(240,165,0,.28);border-radius:50px;padding:.48rem 1.15rem;margin-bottom:2.25rem;}
+.bdot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:bpulse 2s infinite;}
+@keyframes bpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(240,165,0,.45);}50%{opacity:.45;box-shadow:0 0 0 7px transparent;}}
+.kicker{font-family:var(--ff1);font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
+h1{font-family:var(--ff1);font-size:clamp(3rem,7.5vw,7rem);font-weight:800;line-height:.93;letter-spacing:-.04em;margin-bottom:1.5rem;}
+.h1a{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(238,244,255,.14);}
+.h1b{display:block;background:linear-gradient(110deg,var(--cyan),var(--green) 45%,var(--gold));background-size:220% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shim 5s linear infinite;}
+@keyframes shim{to{background-position:220% center;}}
+.h1c{display:block;}
+.hsub{font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;line-height:1.85;color:rgba(238,244,255,.55);max-width:610px;margin:0 auto 2.75rem;}
+.hsub strong{color:var(--white);font-weight:500;}
+.hbtns{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff1);font-size:.76rem;font-weight:700;letter-spacing:.05em;border-radius:50px;text-decoration:none;cursor:pointer;border:none;padding:.88rem 2rem;transition:all .3s;}
+.btng{background:linear-gradient(135deg,#F0A500,#FFD166);color:#06090d;box-shadow:0 8px 30px rgba(240,165,0,.22);}
+.btng:hover{transform:translateY(-3px);box-shadow:0 18px 48px rgba(240,165,0,.42);}
+.btno{background:rgba(255,255,255,.04);color:var(--white);border:1px solid rgba(0,229,255,.22);}
+.btno:hover{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.5);}
+
+/* HERO METRICS BAR */
+.hmet{display:flex;border:1px solid rgba(0,229,255,.1);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);backdrop-filter:blur(12px);max-width:680px;margin:0 auto;}
+.hm{flex:1;padding:1.4rem .8rem;text-align:center;border-right:1px solid rgba(0,229,255,.08);transition:background .3s;}
+.hm:last-child{border-right:none;}
+.hm:hover{background:rgba(0,229,255,.04);}
+.hmn{font-family:var(--ff1);font-size:2rem;font-weight:800;line-height:1;color:var(--cyan);}
+.hmn.gl{color:var(--gold);}
+.hmn.gn{color:var(--green);}
+.hml{font-size:.58rem;font-weight:400;letter-spacing:.06em;color:var(--muted);margin-top:5px;line-height:1.4;}
+
+/* SHARED LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:5.5rem 2rem;position:relative;z-index:1;}
+.wrapsm{max-width:860px;margin:0 auto;padding:5.5rem 2rem;position:relative;z-index:1;}
 .divider{border:none;border-top:1px solid rgba(0,229,255,.07);margin:0;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.9rem;}
+.eyebrow::before{content:"";width:18px;height:1px;background:currentColor;}
+.eyebrow.gl{color:var(--gold);}
+.eyebrow.gn{color:var(--green);}
+h2{font-family:var(--ff1);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;line-height:1.06;letter-spacing:-.025em;margin-bottom:1.1rem;}
+.sub{font-size:.95rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.82;max-width:560px;margin-bottom:3rem;}
 
 /* PROBLEM STRIP */
-.problem-strip{position:relative;z-index:1;padding:3.5rem 2rem;background:linear-gradient(135deg,rgba(240,165,0,.04),rgba(0,229,255,.03));border-top:1px solid rgba(240,165,0,.1);border-bottom:1px solid rgba(240,165,0,.1);}
-.problem-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5rem;}
-@media(max-width:768px){.problem-inner{grid-template-columns:1fr;}}
-.prob-item{display:flex;gap:1.25rem;align-items:flex-start;}
-.prob-num{font-family:var(--ff1);font-size:2.8rem;font-weight:800;color:rgba(240,165,0,.15);line-height:1;flex-shrink:0;min-width:3.5rem;}
-.prob-text h4{font-family:var(--ff1);font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:.4rem;}
-.prob-text p{font-size:.83rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.65;}
+.pstrip{position:relative;z-index:1;padding:3.5rem 2rem;background:linear-gradient(135deg,rgba(240,165,0,.038),rgba(0,229,255,.025));border-top:1px solid rgba(240,165,0,.1);border-bottom:1px solid rgba(240,165,0,.1);}
+.pinner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5rem;}
+@media(max-width:780px){.pinner{grid-template-columns:1fr;gap:2rem;}}
+.pitem{display:flex;gap:1.2rem;align-items:flex-start;}
+.pnum{font-family:var(--ff1);font-size:2.6rem;font-weight:800;color:rgba(240,165,0,.14);line-height:1;flex-shrink:0;min-width:3.2rem;}
+.ptxt h4{font-family:var(--ff1);font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.38rem;}
+.ptxt p{font-size:.82rem;font-weight:300;color:rgba(238,244,255,.48);line-height:1.65;}
 
 /* MISSION */
-.mission-mega{text-align:center;padding:5rem 2rem;position:relative;overflow:hidden;}
-.mission-mega::before{content:"AI";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff1);font-size:22vw;font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(0,229,255,.04);pointer-events:none;white-space:nowrap;letter-spacing:-.05em;z-index:0;}
-.mission-mega-inner{position:relative;z-index:1;max-width:820px;margin:0 auto;}
-.mission-quote{font-family:var(--ff1);font-size:clamp(1.5rem,3.5vw,2.8rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.5rem;}
-.mission-quote .ac{color:var(--cyan);}
-.mission-quote .ag{color:var(--gold);}
-.mission-desc{font-size:1.05rem;font-weight:300;line-height:1.85;color:rgba(238,244,255,.6);margin-bottom:2.5rem;}
-.mission-pills{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;}
-.mpill{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:50px;padding:.4rem 1rem;}
-.mpill.c{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);color:var(--cyan);}
-.mpill.g{background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);color:var(--gold);}
-.mpill.v{background:rgba(0,229,165,.08);border:1px solid rgba(0,229,165,.2);color:var(--green);}
+.mission{text-align:center;padding:5rem 2rem;position:relative;overflow:hidden;z-index:1;}
+.mission::before{content:"AI";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff1);font-size:min(22vw,280px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(0,229,255,.04);pointer-events:none;z-index:0;}
+.minn{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+.mqt{font-family:var(--ff1);font-size:clamp(1.5rem,3.2vw,2.7rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.4rem;}
+.mqt .ac{color:var(--cyan);}
+.mqt .ag{color:var(--gold);}
+.mdesc{font-size:1rem;font-weight:300;line-height:1.88;color:rgba(238,244,255,.58);margin-bottom:2.25rem;}
+.mpills{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;}
+.mp{font-size:.7rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-radius:50px;padding:.38rem .95rem;border:1px solid;}
+.mp.c{background:rgba(0,229,255,.07);border-color:rgba(0,229,255,.2);color:var(--cyan);}
+.mp.g{background:rgba(240,165,0,.07);border-color:rgba(240,165,0,.2);color:var(--gold);}
+.mp.v{background:rgba(0,229,165,.07);border-color:rgba(0,229,165,.2);color:var(--green);}
 
-/* CARDS GRID */
-.tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-@media(max-width:768px){.tl-grid{grid-template-columns:1fr;}}
-.tl-card{background:var(--s1);border:1px solid rgba(0,229,255,.09);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s;}
-.tl-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(0,229,255,.05),transparent 55%);opacity:0;transition:.3s;}
-.tl-card:hover{border-color:rgba(0,229,255,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4);}
-.tl-card:hover::before{opacity:1;}
-.tl-card.gc::before{background:radial-gradient(circle at top left,rgba(240,165,0,.06),transparent 55%);}
-.tl-card.gc:hover{border-color:rgba(240,165,0,.3);}
-.tl-num{font-family:var(--ff1);font-size:3rem;font-weight:800;color:rgba(0,229,255,.08);line-height:1;margin-bottom:.5rem;}
-.tl-card.gc .tl-num{color:rgba(240,165,0,.1);}
-.tl-icon{font-size:1.75rem;margin-bottom:.75rem;display:block;}
-.tl-title{font-family:var(--ff1);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
-.tl-desc{font-size:.85rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.7;}
-.tl-tag{display:inline-block;margin-top:1rem;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border-radius:50px;background:rgba(0,229,255,.08);color:var(--cyan);border:1px solid rgba(0,229,255,.15);}
-.tl-card.gc .tl-tag{background:rgba(240,165,0,.08);color:var(--gold);border-color:rgba(240,165,0,.15);}
+/* SERVICE CARDS */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+@media(max-width:720px){.sgrid{grid-template-columns:1fr;}}
+.sc{background:var(--s1);border:1px solid rgba(0,229,255,.09);border-radius:18px;padding:1.9rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.sc:hover{border-color:rgba(0,229,255,.28);transform:translateY(-4px);box-shadow:0 22px 55px rgba(0,0,0,.38);}
+.sc.alt{border-color:rgba(240,165,0,.09);}
+.sc.alt:hover{border-color:rgba(240,165,0,.3);}
+.sc::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(0,229,255,.045),transparent 58%);opacity:0;transition:opacity .3s;}
+.sc.alt::after{background:radial-gradient(circle at 0 0,rgba(240,165,0,.05),transparent 58%);}
+.sc:hover::after{opacity:1;}
+.scn{font-family:var(--ff1);font-size:2.7rem;font-weight:800;color:rgba(0,229,255,.07);line-height:1;margin-bottom:.4rem;}
+.sc.alt .scn{color:rgba(240,165,0,.09);}
+.scico{font-size:1.7rem;margin-bottom:.65rem;display:block;}
+.sct{font-family:var(--ff1);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.55rem;}
+.scd{font-size:.84rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.72;}
+.sctag{display:inline-block;margin-top:.9rem;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .65rem;border-radius:50px;background:rgba(0,229,255,.08);color:var(--cyan);border:1px solid rgba(0,229,255,.15);}
+.sc.alt .sctag{background:rgba(240,165,0,.08);color:var(--gold);border-color:rgba(240,165,0,.15);}
 
-/* ROI */
-.roi-box{background:var(--s1);border:1px solid rgba(0,229,255,.1);border-radius:28px;padding:3.5rem;position:relative;overflow:hidden;}
-.roi-box::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);}
-.roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-@media(max-width:768px){.roi-grid{grid-template-columns:1fr;}}
-.roi-text h3{font-family:var(--ff1);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1rem;}
-.roi-text p{font-size:.92rem;font-weight:300;color:rgba(238,244,255,.55);line-height:1.8;margin-bottom:1.5rem;}
-.roi-bars{display:flex;flex-direction:column;gap:1.5rem;}
-.rbi-label{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;font-weight:500;color:rgba(238,244,255,.7);margin-bottom:.5rem;}
-.rbi-label span{font-family:var(--ff1);font-weight:700;color:var(--green);}
-.rbi-track{height:8px;background:rgba(255,255,255,.05);border-radius:50px;overflow:hidden;}
-.rbi-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--cyan),var(--green));width:0;transition:width 1.5s cubic-bezier(.34,1.2,.64,1);}
-.rbi-fill.gld{background:linear-gradient(90deg,var(--gold),#FFD166);}
-.rbi-fill.c2{background:linear-gradient(90deg,#0af,var(--cyan));}
+/* ROI BOX */
+.roi{background:var(--s1);border:1px solid rgba(0,229,255,.1);border-radius:26px;padding:3.5rem;position:relative;overflow:hidden;}
+.roi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);}
+.roig{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+@media(max-width:720px){.roig{grid-template-columns:1fr;gap:2rem;}}
+.roitxt h3{font-family:var(--ff1);font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.9rem;line-height:1.1;}
+.roitxt p{font-size:.9rem;font-weight:300;color:rgba(238,244,255,.52);line-height:1.82;margin-bottom:1.4rem;}
+.rbars{display:flex;flex-direction:column;gap:1.4rem;}
+.rb-lbl{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;font-weight:500;color:rgba(238,244,255,.68);margin-bottom:.45rem;}
+.rb-lbl span{font-family:var(--ff1);font-weight:700;color:var(--green);}
+.rb-track{height:7px;background:rgba(255,255,255,.05);border-radius:50px;overflow:hidden;}
+.rb-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--cyan),var(--green));width:0;}
+.rb-fill.gl{background:linear-gradient(90deg,var(--gold),#FFD166);}
+.rb-fill.c2{background:linear-gradient(90deg,#09f,var(--cyan));}
 
 /* PROCESS */
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(0,229,255,.1);border-radius:20px;overflow:hidden;}
-@media(max-width:768px){.process-steps{grid-template-columns:1fr 1fr;}}
-@media(max-width:480px){.process-steps{grid-template-columns:1fr;}}
-.ps{padding:2rem 1.5rem;border-right:1px solid rgba(0,229,255,.08);position:relative;transition:background .3s;}
+.psteps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(0,229,255,.1);border-radius:18px;overflow:hidden;}
+@media(max-width:720px){.psteps{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.psteps{grid-template-columns:1fr;}}
+.ps{padding:1.9rem 1.4rem;border-right:1px solid rgba(0,229,255,.08);position:relative;transition:background .3s;}
 .ps:last-child{border-right:none;}
 .ps:hover{background:rgba(0,229,255,.03);}
-.ps-num{font-family:var(--ff1);font-size:2.5rem;font-weight:800;color:rgba(0,229,255,.12);line-height:1;margin-bottom:.75rem;}
-.ps-icon{font-size:1.5rem;margin-bottom:.5rem;}
-.ps-title{font-family:var(--ff1);font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
-.ps-desc{font-size:.78rem;font-weight:300;color:rgba(238,244,255,.45);line-height:1.6;}
-.ps-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--bg);border:1px solid rgba(0,229,255,.15);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--cyan);z-index:2;}
-@media(max-width:768px){.ps-arrow{display:none;}}
+.psn{font-family:var(--ff1);font-size:2.3rem;font-weight:800;color:rgba(0,229,255,.11);line-height:1;margin-bottom:.65rem;}
+.psico{font-size:1.45rem;margin-bottom:.45rem;}
+.pst{font-family:var(--ff1);font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.45rem;}
+.psd{font-size:.76rem;font-weight:300;color:rgba(238,244,255,.42);line-height:1.62;}
+.psarr{position:absolute;right:-13px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid rgba(0,229,255,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--cyan);z-index:2;}
+@media(max-width:720px){.psarr{display:none;}}
 
 /* STACK */
-.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem;}
-.stack-card{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:14px;padding:1.25rem 1rem;text-align:center;transition:all .25s;cursor:default;}
-.stack-card:hover{border-color:rgba(0,229,255,.3);background:var(--s2);transform:translateY(-3px);}
-.stack-card .si{font-size:1.8rem;margin-bottom:.5rem;display:block;}
-.stack-card .sn{font-size:.72rem;font-weight:600;color:rgba(238,244,255,.7);letter-spacing:.04em;}
-.stack-card .sc{font-size:.6rem;color:var(--muted);margin-top:2px;font-weight:300;}
+.stgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.9rem;}
+.stc{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:13px;padding:1.2rem .9rem;text-align:center;transition:all .24s;}
+.stc:hover{border-color:rgba(0,229,255,.3);background:var(--s2);transform:translateY(-3px);}
+.stco{font-size:1.7rem;margin-bottom:.45rem;display:block;}
+.stn{font-size:.7rem;font-weight:600;color:rgba(238,244,255,.7);letter-spacing:.04em;}
+.stl{font-size:.58rem;color:var(--muted);margin-top:2px;font-weight:300;}
 
-/* TRUST */
-.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-@media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:540px){.trust-grid{grid-template-columns:1fr;}}
-.trust-card{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:16px;padding:1.75rem;transition:all .25s;}
-.trust-card:hover{border-color:rgba(0,229,255,.2);transform:translateY(-3px);}
-.trust-co{font-family:var(--ff1);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
-.trust-yr{font-size:.65rem;color:var(--muted);margin-bottom:1rem;}
-.trust-stat{font-family:var(--ff1);font-size:2rem;font-weight:800;color:var(--cyan);line-height:1;margin-bottom:.3rem;}
-.trust-lbl{font-size:.78rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.5;}
+/* TRUST CARDS */
+.trgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:860px){.trgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.trgrid{grid-template-columns:1fr;}}
+.trc{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:15px;padding:1.7rem;transition:all .25s;}
+.trc:hover{border-color:rgba(0,229,255,.22);transform:translateY(-3px);}
+.trco{font-family:var(--ff1);font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
+.tryr{font-size:.62rem;color:var(--muted);margin-bottom:.9rem;}
+.trst{font-family:var(--ff1);font-size:2.1rem;font-weight:800;color:var(--cyan);line-height:1;margin-bottom:.28rem;}
+.trlb{font-size:.76rem;font-weight:300;color:rgba(238,244,255,.48);line-height:1.52;}
 
-/* OFFER */
-.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-@media(max-width:768px){.offer-grid{grid-template-columns:1fr;}}
-.offer-card{border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;}
-.offer-card.need{background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(0,229,255,.02));border:1px solid rgba(0,229,255,.15);}
-.offer-card.give{background:linear-gradient(135deg,rgba(0,229,165,.06),rgba(0,229,165,.02));border:1px solid rgba(0,229,165,.15);}
-.offer-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;}
-.offer-card.need::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
-.offer-card.give::before{background:linear-gradient(90deg,transparent,var(--green),transparent);}
-.offer-card h3{font-family:var(--ff1);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:8px;}
-.offer-card.need h3{color:var(--cyan);}
-.offer-card.give h3{color:var(--green);}
-.offer-list{list-style:none;}
-.offer-list li{font-size:.88rem;font-weight:300;color:rgba(238,244,255,.75);line-height:1.65;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:.75rem;align-items:flex-start;}
-.offer-list li:last-child{border-bottom:none;}
-.offer-list li::before{content:"→";flex-shrink:0;margin-top:2px;font-size:.8rem;}
-.offer-card.need .offer-list li::before{color:var(--cyan);}
-.offer-card.give .offer-list li::before{color:var(--green);}
+/* OFFER CARDS */
+.ogrid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+@media(max-width:720px){.ogrid{grid-template-columns:1fr;}}
+.oc{border-radius:18px;padding:2.25rem;position:relative;overflow:hidden;}
+.oc.blue{background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(0,229,255,.02));border:1px solid rgba(0,229,255,.14);}
+.oc.grn{background:linear-gradient(135deg,rgba(0,229,165,.055),rgba(0,229,165,.02));border:1px solid rgba(0,229,165,.14);}
+.oc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;}
+.oc.blue::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.oc.grn::before{background:linear-gradient(90deg,transparent,var(--green),transparent);}
+.och{font-family:var(--ff1);font-size:.75rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:7px;}
+.oc.blue .och{color:var(--cyan);}
+.oc.grn .och{color:var(--green);}
+.oli{list-style:none;}
+.oli li{font-size:.86rem;font-weight:300;color:rgba(238,244,255,.74);line-height:1.65;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:.7rem;align-items:flex-start;}
+.oli li:last-child{border-bottom:none;}
+.oli li::before{content:"→";flex-shrink:0;margin-top:2px;font-size:.78rem;}
+.oc.blue .oli li::before{color:var(--cyan);}
+.oc.grn .oli li::before{color:var(--green);}
 
 /* FAQ */
-.faq-item{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:14px;overflow:hidden;margin-bottom:.75rem;}
-.faq-q{width:100%;background:none;border:none;cursor:pointer;padding:1.4rem 1.75rem;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--ff2);font-size:.92rem;font-weight:500;color:var(--white);transition:background .2s;}
-.faq-q:hover{background:rgba(0,229,255,.03);}
-.faq-icon{font-size:1.1rem;color:var(--cyan);flex-shrink:0;transition:transform .3s;}
-.faq-item.open .faq-icon{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:.88rem;font-weight:300;color:rgba(238,244,255,.55);line-height:1.75;}
-.faq-item.open .faq-a{max-height:300px;padding:0 1.75rem 1.5rem;}
+.faqitem{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:13px;overflow:hidden;margin-bottom:.65rem;}
+.faqq{width:100%;background:none;border:none;cursor:pointer;padding:1.35rem 1.65rem;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--ff2);font-size:.9rem;font-weight:500;color:var(--white);transition:background .2s;}
+.faqq:hover{background:rgba(0,229,255,.03);}
+.faqi{font-size:1.1rem;color:var(--cyan);flex-shrink:0;transition:transform .32s;}
+.faqitem.open .faqi{transform:rotate(45deg);}
+.faqa{max-height:0;overflow:hidden;transition:max-height .42s ease,padding .3s;font-size:.86rem;font-weight:300;color:rgba(238,244,255,.52);line-height:1.75;}
+.faqitem.open .faqa{max-height:320px;padding:0 1.65rem 1.4rem;}
+
+/* INDUSTRIES */
+.indgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;}
+.indc{background:var(--s1);border:1px solid rgba(0,229,255,.08);border-radius:14px;padding:1.5rem 1rem;text-align:center;transition:all .25s;}
+.indc:hover{border-color:rgba(0,229,255,.28);transform:translateY(-3px);}
+.indico{font-size:1.9rem;margin-bottom:.5rem;display:block;}
+.indn{font-size:.78rem;font-weight:600;color:rgba(238,244,255,.72);}
 
 /* FINAL CTA */
-.final-cta{position:relative;background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(0,229,165,.03),rgba(240,165,0,.04));border:1px solid rgba(0,229,255,.12);border-radius:32px;padding:5rem 2rem;text-align:center;overflow:hidden;}
-.final-cta::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--green),var(--gold),var(--cyan));background-size:200% auto;animation:shimmer 3s linear infinite;}
-.final-cta-inner{max-width:700px;margin:0 auto;}
-.fcta-chip{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);background:rgba(0,229,165,.07);border:1px solid rgba(0,229,165,.25);border-radius:50px;padding:.4rem 1rem;margin-bottom:2rem;}
-.fcta-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
-.final-cta h2{font-size:clamp(2rem,4vw,3.5rem);margin-bottom:1rem;}
-.final-cta p{font-size:1rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.8;max-width:480px;margin:0 auto 2.5rem;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.contact-links{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem;}
-.c-link{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:500;text-decoration:none;color:rgba(238,244,255,.7);background:rgba(255,255,255,.04);border:1px solid rgba(0,229,255,.15);border-radius:50px;padding:.55rem 1.3rem;transition:all .2s;}
-.c-link:hover{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.35);color:var(--white);}
+.fcta{position:relative;background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(0,229,165,.03),rgba(240,165,0,.035));border:1px solid rgba(0,229,255,.12);border-radius:28px;padding:4.5rem 2rem;text-align:center;overflow:hidden;}
+.fcta::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--green),var(--gold),var(--cyan));background-size:220% auto;animation:shim 4s linear infinite;}
+.fctai{max-width:680px;margin:0 auto;}
+.fchip{display:inline-flex;align-items:center;gap:7px;font-size:.62rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--green);background:rgba(0,229,165,.07);border:1px solid rgba(0,229,165,.24);border-radius:50px;padding:.38rem .95rem;margin-bottom:1.75rem;}
+.fchip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);animation:bpulse 2s infinite;}
+.fcta h2{font-size:clamp(1.9rem,3.8vw,3.2rem);margin-bottom:.9rem;}
+.fcta p{font-size:.96rem;font-weight:300;color:rgba(238,244,255,.5);line-height:1.82;max-width:460px;margin:0 auto 2.25rem;}
+.ctabtns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+.clinks{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.75rem;}
+.cl{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:500;text-decoration:none;color:rgba(238,244,255,.68);background:rgba(255,255,255,.04);border:1px solid rgba(0,229,255,.14);border-radius:50px;padding:.52rem 1.2rem;transition:all .2s;}
+.cl:hover{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.34);color:var(--white);}
 
-footer{position:relative;z-index:1;text-align:center;font-size:.7rem;color:var(--muted);padding:2.5rem 2rem;border-top:1px solid rgba(0,229,255,.06);}
+footer{position:relative;z-index:1;text-align:center;font-size:.68rem;color:var(--muted);padding:2.25rem 2rem;border-top:1px solid rgba(0,229,255,.06);}
 footer a{color:var(--muted);text-decoration:none;}
 footer a:hover{color:var(--cyan);}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.1s;}
-.d2{transition-delay:.2s;}
-.d3{transition-delay:.3s;}
-.d4{transition-delay:.4s;}
+/* SECTION DIVIDER LABEL */
+.sdiv{display:flex;align-items:center;gap:1rem;padding:0 2rem;max-width:1200px;margin:0 auto;}
+.sdiv span{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(74,101,128,.5);white-space:nowrap;}
+.sdiv::before,.sdiv::after{content:"";flex:1;height:1px;background:rgba(0,229,255,.07);}
 
-@media(max-width:768px){
+@media(max-width:720px){
   nav{padding:.75rem 1.25rem;}
-  .roi-box{padding:2rem 1.5rem;}
-  h2{font-size:1.9rem;}
+  .roi{padding:2rem 1.25rem;}
+  h2{font-size:1.85rem;}
+  .hmet{flex-wrap:wrap;}
+  .hm{min-width:50%;border-bottom:1px solid rgba(0,229,255,.08);}
 }
 </style>
 </head>
 <body>
-
 <canvas id="canvas"></canvas>
 <div class="glow g1"></div>
 <div class="glow g2"></div>
 <div class="glow g3"></div>
 
+<!-- NAV -->
 <nav>
   <a href="https://lpdigitalconsulting.github.io/lpdigital/" class="logo">LP<em>.</em>Digital</a>
   <div class="nav-r">
-    <a href="#que-haces" class="nav-pill">El Rol</a>
-    <a href="#stack" class="nav-pill">Stack IA</a>
-    <a href="#proceso" class="nav-pill">Proceso</a>
-    <a href="https://lpdigitalconsulting.github.io/lpdigital/" class="nav-back">← Volver</a>
-    <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20implementar%20IA%20en%20mi%20empresa" target="_blank" class="nav-cta">Agendar ahora →</a>
+    <a href="#servicios" class="npill">Servicios</a>
+    <a href="#proceso" class="npill">Proceso</a>
+    <a href="#stack" class="npill">Stack IA</a>
+    <a href="#resultados" class="npill">Resultados</a>
+    <a href="https://lpdigitalconsulting.github.io/lpdigital/" class="nback">← Volver</a>
+    <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20implementar%20IA%20en%20mi%20empresa" target="_blank" class="ncta">Agendar ahora →</a>
   </div>
 </nav>
 
-<div class="ticker-wrap" style="margin-top:62px;">
+<!-- TICKER -->
+<div class="ticker-wrap">
   <div class="ticker">
-    <span class="ticker-item">ChatGPT Enterprise</span>
-    <span class="ticker-item">Automatización de Procesos</span>
-    <span class="ticker-item">Reducción de Costos Operativos</span>
-    <span class="ticker-item">Gemini for Business</span>
-    <span class="ticker-item">Azure OpenAI Service</span>
-    <span class="ticker-item">ROI Medible en 90 días</span>
-    <span class="ticker-item">Capacitación de Equipos</span>
-    <span class="ticker-item">Power BI + IA</span>
-    <span class="ticker-item">n8n · Make · Zapier</span>
-    <span class="ticker-item">Transformación Digital Real</span>
-    <span class="ticker-item">ChatGPT Enterprise</span>
-    <span class="ticker-item">Automatización de Procesos</span>
-    <span class="ticker-item">Reducción de Costos Operativos</span>
-    <span class="ticker-item">Gemini for Business</span>
-    <span class="ticker-item">Azure OpenAI Service</span>
-    <span class="ticker-item">ROI Medible en 90 días</span>
-    <span class="ticker-item">Capacitación de Equipos</span>
-    <span class="ticker-item">Power BI + IA</span>
-    <span class="ticker-item">n8n · Make · Zapier</span>
-    <span class="ticker-item">Transformación Digital Real</span>
+    <span class="tki">ChatGPT Enterprise</span><span class="tki">Automatización Total</span><span class="tki">Reducción de Costos Operativos</span><span class="tki">Gemini for Business</span><span class="tki">Azure OpenAI</span><span class="tki">ROI en 90 días</span><span class="tki">Capacitación de Equipos</span><span class="tki">Power BI + IA</span><span class="tki">n8n · Make · Zapier</span><span class="tki">Transformación Real</span><span class="tki">Diagnóstico Gratuito</span>
+    <span class="tki">ChatGPT Enterprise</span><span class="tki">Automatización Total</span><span class="tki">Reducción de Costos Operativos</span><span class="tki">Gemini for Business</span><span class="tki">Azure OpenAI</span><span class="tki">ROI en 90 días</span><span class="tki">Capacitación de Equipos</span><span class="tki">Power BI + IA</span><span class="tki">n8n · Make · Zapier</span><span class="tki">Transformación Real</span><span class="tki">Diagnóstico Gratuito</span>
   </div>
 </div>
 
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <div class="hero-badge"><span class="badge-dot"></span>Servicio Disponible · 2026</div>
-    <div class="hero-kicker">Consultoría Estratégica de IA · LP Digital Consulting</div>
+  <div class="hi">
+    <div class="badge"><span class="bdot"></span>Servicio Disponible · 2026</div>
+    <div class="kicker">Consultoría Estratégica · LP Digital Consulting</div>
     <h1>
-      <span class="h1-outline">Inteligencia</span>
-      <span class="h1-grad">Artificial</span>
-      <span class="h1-solid">Empresarial</span>
+      <span class="h1a">Inteligencia</span>
+      <span class="h1b">Artificial</span>
+      <span class="h1c">Empresarial</span>
     </h1>
-    <p class="hero-sub">El rol que tu empresa <strong>no sabe que necesita</strong> — hasta que lo implementa.<br>Detectamos, implementamos y automatizamos con IA en <strong>toda tu operación</strong>.</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20implementar%20IA%20en%20mi%20empresa" target="_blank" class="btn btn-gold">⚡ Quiero esto en mi empresa</a>
-      <a href="#que-haces" class="btn btn-ghost">Ver el rol completo ↓</a>
+    <p class="hsub">El servicio que tu empresa <strong>no sabe que necesita</strong> — hasta que lo implementa.<br>Detecto, implemento y automatizo con IA en <strong>toda tu operación</strong>.</p>
+    <div class="hbtns">
+      <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20implementar%20IA%20en%20mi%20empresa" target="_blank" class="btn btng">⚡ Quiero esto en mi empresa</a>
+      <a href="#servicios" class="btn btno">Ver mis servicios ↓</a>
     </div>
-    <div class="hero-metrics">
-      <div class="hm"><div class="hm-n" id="c1">120+</div><div class="hm-l">Proyectos ejecutados</div></div>
-      <div class="hm"><div class="hm-n gold" id="c2">10+</div><div class="hm-l">Años de experiencia</div></div>
-      <div class="hm"><div class="hm-n grn">90d</div><div class="hm-l">ROI visible</div></div>
-      <div class="hm"><div class="hm-n" id="c3">4</div><div class="hm-l">Empresas Fortune 500</div></div>
+    <div class="hmet">
+      <div class="hm"><div class="hmn" id="cnt1">120</div><div class="hml">Proyectos ejecutados</div></div>
+      <div class="hm"><div class="hmn gl" id="cnt2">10</div><div class="hml">Años de experiencia</div></div>
+      <div class="hm"><div class="hmn gn">90</div><div class="hml">Días para ver ROI</div></div>
+      <div class="hm"><div class="hmn" id="cnt3">4</div><div class="hml">Empresas Fortune 500</div></div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<div class="problem-strip">
-  <div class="problem-inner">
-    <div class="prob-item reveal">
-      <div class="prob-num">01</div>
-      <div class="prob-text"><h4>Tu equipo pierde horas en tareas repetitivas</h4><p>Procesos manuales que podrían automatizarse en días consumen semanas de trabajo humano valioso cada mes.</p></div>
+<!-- PROBLEM -->
+<div class="sdiv"><span>El problema</span></div>
+<div class="pstrip">
+  <div class="pinner">
+    <div class="pitem">
+      <div class="pnum">01</div>
+      <div class="ptxt"><h4>Tu equipo pierde horas en tareas repetitivas</h4><p>Procesos manuales que la IA puede automatizar en días consumen semanas de trabajo valioso cada mes — y nadie lo nota hasta que alguien lo mide.</p></div>
     </div>
-    <div class="prob-item reveal d1">
-      <div class="prob-num">02</div>
-      <div class="prob-text"><h4>La IA existe, pero nadie sabe cómo aplicarla</h4><p>ChatGPT, Gemini y cientos de herramientas disponibles — sin un experto que las conecte con tu operación real.</p></div>
+    <div class="pitem">
+      <div class="pnum">02</div>
+      <div class="ptxt"><h4>La IA existe, pero nadie sabe cómo aplicarla</h4><p>ChatGPT, Gemini, cientos de herramientas disponibles — y sin un experto que las conecte con tu operación real, siguen siendo demos de YouTube.</p></div>
     </div>
-    <div class="prob-item reveal d2">
-      <div class="prob-num">03</div>
-      <div class="prob-text"><h4>La competencia ya se está moviendo</h4><p>Cada mes sin implementar IA es una ventaja que cedes. El costo de no actuar ya supera al de actuar.</p></div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="mission-mega section">
-  <div class="mission-mega-inner reveal">
-    <div class="eyebrow gold" style="justify-content:center;">La Misión</div>
-    <div class="mission-quote">Ser el <span class="ac">cerebro detrás de la IA</span><br>en <span class="ag">toda</span> tu empresa.</div>
-    <p class="mission-desc">No un consultor que entrega un reporte y desaparece.<br>Un <strong style="color:var(--white);">implementador estratégico</strong> que detecta oportunidades, despliega herramientas y logra que tu operación fluya mejor — desde el primer mes.</p>
-    <div class="mission-pills">
-      <span class="mpill c">🔍 Diagnóstico profundo</span>
-      <span class="mpill g">⚙️ Implementación real</span>
-      <span class="mpill v">📈 Resultados medibles</span>
-      <span class="mpill c">🧑‍🏫 Capacitación continua</span>
-      <span class="mpill g">🤖 Stack de IA completo</span>
+    <div class="pitem">
+      <div class="pnum">03</div>
+      <div class="ptxt"><h4>La competencia ya se está moviendo</h4><p>Cada mes sin implementar IA es una ventaja que le cedes a alguien más. El costo de no actuar ya superó hace tiempo el costo de actuar.</p></div>
     </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="wrap" id="que-haces">
-  <div class="eyebrow">Actividades del Rol</div>
-  <h2>¿Qué harás en el día a día?</h2>
-  <p class="section-sub">Trabajo real, impacto tangible. Cada actividad diseñada para generar ahorro o ventaja competitiva medible.</p>
-  <div class="tl-grid">
-    <div class="tl-card reveal">
-      <div class="tl-num">01</div>
-      <span class="tl-icon">🔍</span>
-      <div class="tl-title">Levantamiento de Procesos</div>
-      <p class="tl-desc">Mapeo profundo de operaciones en cada área de la empresa para identificar cuellos de botella, costos ocultos y oportunidades de automatización con precisión quirúrgica.</p>
-      <span class="tl-tag">Todas las áreas</span>
-    </div>
-    <div class="tl-card gc reveal d1">
-      <div class="tl-num">02</div>
-      <span class="tl-icon">💰</span>
-      <div class="tl-title">Detección de Oportunidades IA</div>
-      <p class="tl-desc">Identificar exactamente dónde la IA puede ahorrar tiempo, dinero y errores — con proyección de ROI antes de invertir un peso. Nada se implementa sin justificación económica.</p>
-      <span class="tl-tag">ROI primero</span>
-    </div>
-    <div class="tl-card reveal d1">
-      <div class="tl-num">03</div>
-      <span class="tl-icon">🤖</span>
-      <div class="tl-title">Implementación de Herramientas</div>
-      <p class="tl-desc">Despliegue de ChatGPT Enterprise, Gemini, Claude y más — integradas a tus sistemas actuales, no como experimentos sino como soluciones productivas desde el día uno.</p>
-      <span class="tl-tag">Desde día 1</span>
-    </div>
-    <div class="tl-card gc reveal d2">
-      <div class="tl-num">04</div>
-      <span class="tl-icon">⚙️</span>
-      <div class="tl-title">Automatización Operativa</div>
-      <p class="tl-desc">Eliminar tareas manuales y repetitivas en áreas administrativas, ventas, RH y operaciones — liberando al equipo para trabajo de alto valor que las máquinas no pueden hacer.</p>
-      <span class="tl-tag">Impacto inmediato</span>
-    </div>
-    <div class="tl-card reveal d2">
-      <div class="tl-num">05</div>
-      <span class="tl-icon">🧑‍🏫</span>
-      <div class="tl-title">Capacitación de Equipos</div>
-      <p class="tl-desc">Traducir la IA a lenguaje humano: talleres prácticos, guías adaptadas a cada área y acompañamiento hasta que tu equipo adopte las herramientas con confianza y autonomía total.</p>
-      <span class="tl-tag">Adopción garantizada</span>
-    </div>
-    <div class="tl-card gc reveal d3">
-      <div class="tl-num">06</div>
-      <span class="tl-icon">📊</span>
-      <div class="tl-title">Seguimiento y Mejora Continua</div>
-      <p class="tl-desc">Dashboards ejecutivos con métricas de impacto en tiempo real. Ciclos de optimización mensuales para que la implementación no solo funcione — sino que mejore con el tiempo.</p>
-      <span class="tl-tag">Mejora mensual</span>
+<!-- MISSION -->
+<div class="sdiv"><span>La misión</span></div>
+<div class="mission">
+  <div class="minn">
+    <div class="eyebrow gl" style="justify-content:center;margin-bottom:1.25rem;">AI Pro Master · Leonardo Pérez Morales</div>
+    <div class="mqt">Ser el <span class="ac">cerebro detrás de la IA</span><br>en <span class="ag">toda</span> tu empresa.</div>
+    <p class="mdesc">No un consultor que entrega un PDF y desaparece.<br>Un <strong style="color:var(--white);">implementador estratégico</strong> que entiende tu negocio, detecta dónde la IA genera valor real, la despliega en tu operación y capacita a tu equipo — con resultados medibles desde el mes uno.</p>
+    <div class="mpills">
+      <span class="mp c">🔍 Diagnóstico profundo</span>
+      <span class="mp g">⚙️ Implementación real</span>
+      <span class="mp v">📈 Resultados medibles</span>
+      <span class="mp c">🧑‍🏫 Capacitación continua</span>
+      <span class="mp g">🤖 Stack completo de IA</span>
+      <span class="mp v">📊 Seguimiento mensual</span>
     </div>
   </div>
 </div>
 
-<hr class="divider">
+<!-- SERVICES -->
+<div class="sdiv"><span>Lo que hago por tu empresa</span></div>
+<div class="wrap" id="servicios">
+  <div class="eyebrow">Mis servicios de IA</div>
+  <h2>¿Qué hago yo por tu empresa?</h2>
+  <p class="sub">Seis servicios concretos, con impacto tangible. No teoría — ejecución real en tu operación.</p>
+  <div class="sgrid">
+    <div class="sc">
+      <div class="scn">01</div>
+      <span class="scico">🔍</span>
+      <div class="sct">Mapeo y Levantamiento de Procesos</div>
+      <p class="scd">Analizo y documento cada proceso de tu empresa: dónde se pierde tiempo, dónde hay errores, dónde la IA puede entrar y generar ahorro inmediato. Salgo de tu empresa con un mapa completo de oportunidades.</p>
+      <span class="sctag">Todas las áreas</span>
+    </div>
+    <div class="sc alt">
+      <div class="scn">02</div>
+      <span class="scico">💰</span>
+      <div class="sct">Detección de Oportunidades con IA</div>
+      <p class="scd">Te entrego un mapa claro de exactamente dónde la IA puede ahorrarte dinero, tiempo y errores — con ROI proyectado antes de gastar un solo peso. Sin humo: números reales, casos concretos para tu industria.</p>
+      <span class="sctag">ROI antes de invertir</span>
+    </div>
+    <div class="sc alt">
+      <div class="scn">03</div>
+      <span class="scico">🤖</span>
+      <div class="sct">Implementación de Herramientas de IA</div>
+      <p class="scd">Instalo y configuro ChatGPT Enterprise, Gemini, Claude, Azure OpenAI y más — integradas directamente en tus flujos de trabajo actuales. No demos aisladas: soluciones que tu equipo usa desde el primer día.</p>
+      <span class="sctag">En producción desde día 1</span>
+    </div>
+    <div class="sc">
+      <div class="scn">04</div>
+      <span class="scico">⚙️</span>
+      <div class="sct">Automatización Operativa</div>
+      <p class="scd">Automatizo las tareas repetitivas de tu operación: administración, ventas, RH, atención a clientes, finanzas. Tu equipo deja de hacer lo que la máquina puede hacer mejor — y se enfoca en lo que realmente importa.</p>
+      <span class="sctag">Impacto desde semana 1</span>
+    </div>
+    <div class="sc">
+      <div class="scn">05</div>
+      <span class="scico">🧑‍🏫</span>
+      <div class="sct">Capacitación de Equipos</div>
+      <p class="scd">Capacito a tu equipo en lenguaje humano, no de ingenieros. Talleres prácticos, guías por área y acompañamiento continuo hasta que cada persona use las herramientas con confianza y autonomía real.</p>
+      <span class="sctag">Adopción garantizada</span>
+    </div>
+    <div class="sc alt">
+      <div class="scn">06</div>
+      <span class="scico">📊</span>
+      <div class="sct">Seguimiento y Mejora Continua</div>
+      <p class="scd">Entrego dashboards ejecutivos con métricas de impacto en tiempo real. Cada mes revisamos resultados, ajustamos estrategia y expandimos la IA a nuevas áreas. El programa no se estanca — evoluciona contigo.</p>
+      <span class="sctag">Mejora mensual garantizada</span>
+    </div>
+  </div>
+</div>
 
-<div class="wrap">
-  <div class="roi-box reveal">
-    <div class="roi-grid">
-      <div class="roi-text">
-        <div class="eyebrow grn">Impacto Real</div>
-        <h3>Números que hablan por sí solos</h3>
-        <p>Basado en implementaciones reales en empresas de múltiples industrias. No proyecciones teóricas — resultados documentados en campo.</p>
-        <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20saber%20el%20ROI%20estimado%20para%20mi%20empresa" target="_blank" class="btn btn-ghost" style="font-size:.75rem;padding:.7rem 1.5rem;">Calcular mi ROI →</a>
+<!-- ROI -->
+<div class="sdiv"><span>Impacto real</span></div>
+<div class="wrap" id="resultados">
+  <div class="roi">
+    <div class="roig">
+      <div class="roitxt">
+        <div class="eyebrow gn">Números que hablan</div>
+        <h3>Resultados documentados en campo</h3>
+        <p>No proyecciones. Métricas reales obtenidas en implementaciones previas en OXXO, BanCoppel, Ford y AXA — entre otras empresas.</p>
+        <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20calcular%20el%20ROI%20de%20IA%20para%20mi%20empresa" target="_blank" class="btn btno" style="font-size:.73rem;padding:.7rem 1.45rem;">Calcular mi ROI →</a>
       </div>
-      <div class="roi-bars">
+      <div class="rbars" id="roibars">
         <div>
-          <div class="rbi-label">Reducción de tiempo en tareas operativas <span>hasta 70%</span></div>
-          <div class="rbi-track"><div class="rbi-fill" data-w="70%"></div></div>
+          <div class="rb-lbl">Reducción de tiempo en tareas operativas <span>hasta 70%</span></div>
+          <div class="rb-track"><div class="rb-fill" data-w="70%"></div></div>
         </div>
         <div>
-          <div class="rbi-label">Reducción de errores en procesos clave <span>hasta 85%</span></div>
-          <div class="rbi-track"><div class="rbi-fill gld" data-w="85%"></div></div>
+          <div class="rb-lbl">Reducción de errores en procesos clave <span>hasta 85%</span></div>
+          <div class="rb-track"><div class="rb-fill gl" data-w="85%"></div></div>
         </div>
         <div>
-          <div class="rbi-label">Adopción del equipo tras capacitación <span>92%</span></div>
-          <div class="rbi-track"><div class="rbi-fill c2" data-w="92%"></div></div>
+          <div class="rb-lbl">Adopción del equipo tras capacitación <span>92%</span></div>
+          <div class="rb-track"><div class="rb-fill c2" data-w="92%"></div></div>
         </div>
         <div>
-          <div class="rbi-label">Proyectos entregados en tiempo y forma <span>+95%</span></div>
-          <div class="rbi-track"><div class="rbi-fill" data-w="95%"></div></div>
+          <div class="rb-lbl">Proyectos entregados en tiempo y forma <span>+95%</span></div>
+          <div class="rb-track"><div class="rb-fill" data-w="95%"></div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<hr class="divider">
-
+<!-- PROCESS -->
+<div class="sdiv"><span>Cómo trabajamos</span></div>
 <div class="wrap" id="proceso">
-  <div class="eyebrow">Cómo trabajamos</div>
-  <h2>El proceso de 4 pasos</h2>
-  <p class="section-sub">Desde el diagnóstico hasta los resultados. Sin rodeos, sin burocracia — ejecutamos.</p>
-  <div class="process-steps reveal">
+  <div class="eyebrow">El proceso</div>
+  <h2>4 pasos del diagnóstico al resultado</h2>
+  <p class="sub">Sin burocracia, sin teoría innecesaria. Cada paso tiene un entregable concreto y fechas definidas.</p>
+  <div class="psteps">
     <div class="ps">
-      <div class="ps-num">01</div>
-      <div class="ps-icon">🎯</div>
-      <div class="ps-title">Diagnóstico</div>
-      <p class="ps-desc">Sesión estratégica gratuita. Analizamos tu operación y detectamos las 3 mejores oportunidades de IA para tu empresa específica.</p>
-      <div class="ps-arrow">→</div>
+      <div class="psn">01</div>
+      <div class="psico">🎯</div>
+      <div class="pst">Diagnóstico</div>
+      <p class="psd">Sesión gratuita de 60 min. Analizamos tu operación e identificamos las 3 oportunidades de IA con mayor impacto para tu empresa.</p>
+      <div class="psarr">→</div>
     </div>
     <div class="ps">
-      <div class="ps-num">02</div>
-      <div class="ps-icon">📋</div>
-      <div class="ps-title">Roadmap</div>
-      <p class="ps-desc">Plan de implementación con prioridades, herramientas específicas, inversión estimada y ROI proyectado por iniciativa.</p>
-      <div class="ps-arrow">→</div>
+      <div class="psn">02</div>
+      <div class="psico">📋</div>
+      <div class="pst">Roadmap</div>
+      <p class="psd">Plan de implementación detallado: herramientas específicas, inversión estimada, ROI proyectado por iniciativa y cronograma.</p>
+      <div class="psarr">→</div>
     </div>
     <div class="ps">
-      <div class="ps-num">03</div>
-      <div class="ps-icon">🚀</div>
-      <div class="ps-title">Implementación</div>
-      <p class="ps-desc">Despliegue ágil de herramientas, automatizaciones y capacitación. Resultados visibles en las primeras 4 semanas.</p>
-      <div class="ps-arrow">→</div>
+      <div class="psn">03</div>
+      <div class="psico">🚀</div>
+      <div class="pst">Implementación</div>
+      <p class="psd">Despliegue ágil de herramientas, automatizaciones y capacitación. Primeros resultados visibles en las primeras 4 semanas.</p>
+      <div class="psarr">→</div>
     </div>
     <div class="ps">
-      <div class="ps-num">04</div>
-      <div class="ps-icon">📈</div>
-      <div class="ps-title">Optimización</div>
-      <p class="ps-desc">Medición continua, ajustes mensuales y expansión del programa de IA a nuevas áreas del negocio.</p>
+      <div class="psn">04</div>
+      <div class="psico">📈</div>
+      <div class="pst">Optimización</div>
+      <p class="psd">Dashboards de resultados, ciclos mensuales de mejora y expansión del programa de IA a nuevas áreas del negocio.</p>
     </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="wrap" id="stack">
-  <div class="eyebrow">Arsenal Tecnológico</div>
-  <h2>Stack de IA que dominamos</h2>
-  <p class="section-sub">No trabajamos con una sola herramienta. Seleccionamos el stack correcto para tu industria y tus procesos específicos.</p>
-  <div class="stack-grid reveal">
-    <div class="stack-card"><span class="si">🤖</span><div class="sn">ChatGPT</div><div class="sc">OpenAI Enterprise</div></div>
-    <div class="stack-card"><span class="si">💎</span><div class="sn">Gemini</div><div class="sc">Google for Business</div></div>
-    <div class="stack-card"><span class="si">🧠</span><div class="sn">Claude</div><div class="sc">Anthropic</div></div>
-    <div class="stack-card"><span class="si">☁️</span><div class="sn">Azure OpenAI</div><div class="sc">Microsoft</div></div>
-    <div class="stack-card"><span class="si">🔗</span><div class="sn">Make / Zapier</div><div class="sc">Automatización</div></div>
-    <div class="stack-card"><span class="si">🌐</span><div class="sn">n8n</div><div class="sc">Self-hosted AI</div></div>
-    <div class="stack-card"><span class="si">📊</span><div class="sn">Power BI + IA</div><div class="sc">Analítica avanzada</div></div>
-    <div class="stack-card"><span class="si">🗄️</span><div class="sn">Azure DevOps</div><div class="sc">Infraestructura</div></div>
-    <div class="stack-card"><span class="si">📲</span><div class="sn">WhatsApp API</div><div class="sc">Automatización canal</div></div>
-    <div class="stack-card"><span class="si">📋</span><div class="sn">Notion AI</div><div class="sc">Gestión inteligente</div></div>
-    <div class="stack-card"><span class="si">🛒</span><div class="sn">SAP Ariba</div><div class="sc">Procurement IA</div></div>
-    <div class="stack-card"><span class="si">⚡</span><div class="sn">+ Tu industria</div><div class="sc">Stack personalizado</div></div>
-  </div>
-</div>
-
-<hr class="divider">
-
+<!-- INDUSTRIES -->
+<div class="sdiv"><span>Industrias atendidas</span></div>
 <div class="wrap">
-  <div class="eyebrow gold">Historial Comprobado</div>
-  <h2>El consultor ya lo hizo antes</h2>
-  <p class="section-sub">No teorías. Resultados reales en empresas que conoces.</p>
-  <div class="trust-grid">
-    <div class="trust-card reveal"><div class="trust-co">OXXO · Grupo FEMSA</div><div class="trust-yr">2024 – 2025</div><div class="trust-stat">5</div><div class="trust-lbl">Proyectos tecnológicos nacionales. POS en toda la cadena + SPEI. Equipo de 32 personas.</div></div>
-    <div class="trust-card reveal d1"><div class="trust-co">BanCoppel</div><div class="trust-yr">2021 – 2024</div><div class="trust-stat">120</div><div class="trust-lbl">Proyectos de transformación bancaria. SAP Ariba P2P, digitalización y priorización con C-Suite.</div></div>
-    <div class="trust-card reveal d2"><div class="trust-co">Ford Motor Company</div><div class="trust-yr">2020 – 2021</div><div class="trust-stat">1</div><div class="trust-lbl">OS del Ford Mustang Mach-E. Coordinación de equipos de ingeniería globales. EV más vendido de Ford MX.</div></div>
-    <div class="trust-card reveal d1"><div class="trust-co">AXA Keralty</div><div class="trust-yr">2021 – 2022</div><div class="trust-stat">20</div><div class="trust-lbl">Proyectos end-to-end para la app de salud digital de AXA: diseño, desarrollo, QA y lanzamiento.</div></div>
-    <div class="trust-card reveal d2"><div class="trust-co">Tec de Monterrey · Anáhuac</div><div class="trust-yr">Formación académica</div><div class="trust-stat">Top</div><div class="trust-lbl">Formación en las mejores instituciones del país. Base técnica y estratégica de primer nivel.</div></div>
-    <div class="trust-card reveal d3"><div class="trust-co">Múltiples industrias</div><div class="trust-yr">2014 – Presente</div><div class="trust-stat">10+</div><div class="trust-lbl">Años transformando empresas en retail, banca, automotriz, salud y más con Scrum, OKR y Agile.</div></div>
+  <div class="eyebrow">Sectores</div>
+  <h2>Funciona en tu industria</h2>
+  <p class="sub">La IA tiene aplicaciones concretas en cualquier sector. Estos son los que ya he transformado.</p>
+  <div class="indgrid">
+    <div class="indc"><span class="indico">🏪</span><div class="indn">Retail</div></div>
+    <div class="indc"><span class="indico">🏦</span><div class="indn">Banca y Finanzas</div></div>
+    <div class="indc"><span class="indico">🏥</span><div class="indn">Salud</div></div>
+    <div class="indc"><span class="indico">🏭</span><div class="indn">Manufactura</div></div>
+    <div class="indc"><span class="indico">🚗</span><div class="indn">Automotriz</div></div>
+    <div class="indc"><span class="indico">📦</span><div class="indn">Logística</div></div>
+    <div class="indc"><span class="indico">⚖️</span><div class="indn">Servicios Legales</div></div>
+    <div class="indc"><span class="indico">🏗️</span><div class="indn">Construcción</div></div>
+    <div class="indc"><span class="indico">🎓</span><div class="indn">Educación</div></div>
+    <div class="indc"><span class="indico">🛒</span><div class="indn">E-commerce</div></div>
+    <div class="indc"><span class="indico">📡</span><div class="indn">Telecomunicaciones</div></div>
+    <div class="indc"><span class="indico">⚡</span><div class="indn">Tu industria</div></div>
   </div>
 </div>
 
-<hr class="divider">
+<!-- STACK -->
+<div class="sdiv"><span>Arsenal tecnológico</span></div>
+<div class="wrap" id="stack">
+  <div class="eyebrow">Stack de IA</div>
+  <h2>Herramientas que domino</h2>
+  <p class="sub">No trabajo con una sola herramienta. Selecciono el stack correcto para tu industria, tus procesos y tu presupuesto.</p>
+  <div class="stgrid">
+    <div class="stc"><span class="stco">🤖</span><div class="stn">ChatGPT</div><div class="stl">OpenAI Enterprise</div></div>
+    <div class="stc"><span class="stco">💎</span><div class="stn">Gemini</div><div class="stl">Google for Business</div></div>
+    <div class="stc"><span class="stco">🧠</span><div class="stn">Claude</div><div class="stl">Anthropic</div></div>
+    <div class="stc"><span class="stco">☁️</span><div class="stn">Azure OpenAI</div><div class="stl">Microsoft</div></div>
+    <div class="stc"><span class="stco">🔗</span><div class="stn">Make / Zapier</div><div class="stl">Automatización</div></div>
+    <div class="stc"><span class="stco">🌐</span><div class="stn">n8n</div><div class="stl">Self-hosted AI</div></div>
+    <div class="stc"><span class="stco">📊</span><div class="stn">Power BI + IA</div><div class="stl">Analítica avanzada</div></div>
+    <div class="stc"><span class="stco">🗄️</span><div class="stn">Azure DevOps</div><div class="stl">Infraestructura</div></div>
+    <div class="stc"><span class="stco">📲</span><div class="stn">WhatsApp API</div><div class="stl">Automatización canal</div></div>
+    <div class="stc"><span class="stco">📋</span><div class="stn">Notion AI</div><div class="stl">Gestión inteligente</div></div>
+    <div class="stc"><span class="stco">🛒</span><div class="stn">SAP Ariba</div><div class="stl">Procurement IA</div></div>
+    <div class="stc"><span class="stco">⚡</span><div class="stn">+ Tu stack</div><div class="stl">Personalizado</div></div>
+  </div>
+</div>
 
+<!-- TRUST / HISTORIAL -->
+<div class="sdiv"><span>Historial comprobado</span></div>
+<div class="wrap">
+  <div class="eyebrow gl">Track Record</div>
+  <h2>Ya lo hice. Te lo puedo hacer a ti.</h2>
+  <p class="sub">No promesas. Resultados documentados en empresas que ya conoces.</p>
+  <div class="trgrid">
+    <div class="trc">
+      <div class="trco">OXXO · Grupo FEMSA</div>
+      <div class="tryr">2024 – 2025</div>
+      <div class="trst" id="tr1">5</div>
+      <div class="trlb">Proyectos tecnológicos nacionales. POS en toda la cadena + SPEI integrado. Lideré un equipo de 32 personas con Azure DevOps.</div>
+    </div>
+    <div class="trc">
+      <div class="trco">BanCoppel</div>
+      <div class="tryr">2021 – 2024</div>
+      <div class="trst" id="tr2">120</div>
+      <div class="trlb">Proyectos de transformación bancaria. SAP Ariba P2P, digitalización completa y priorización de portfolio con C-Suite.</div>
+    </div>
+    <div class="trc">
+      <div class="trco">Ford Motor Company</div>
+      <div class="tryr">2020 – 2021</div>
+      <div class="trst" id="tr3">1</div>
+      <div class="trlb">OS del Ford Mustang Mach-E. Coordiné equipos globales de ingeniería para el EV más vendido de Ford en México.</div>
+    </div>
+    <div class="trc">
+      <div class="trco">AXA Keralty</div>
+      <div class="tryr">2021 – 2022</div>
+      <div class="trst" id="tr4">20</div>
+      <div class="trlb">Proyectos end-to-end para la app de salud digital de AXA: diseño, desarrollo, QA y lanzamiento a producción.</div>
+    </div>
+    <div class="trc">
+      <div class="trco">Tec de Monterrey · Anáhuac</div>
+      <div class="tryr">Formación académica</div>
+      <div class="trst" style="font-size:1.3rem;">🎓</div>
+      <div class="trlb">Formación en las mejores instituciones del país. Base técnica y estratégica sólida con visión de negocio.</div>
+    </div>
+    <div class="trc">
+      <div class="trco">Múltiples industrias</div>
+      <div class="tryr">2014 – Presente</div>
+      <div class="trst" id="tr5">10</div>
+      <div class="trlb">Años transformando empresas en retail, banca, automotriz y salud. Metodologías Scrum, OKR, Agile y PMO.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFER -->
+<div class="sdiv"><span>Transparencia total</span></div>
 <div class="wrap">
   <div class="eyebrow">Lo que traemos · Lo que ofrecemos</div>
-  <h2>Transparencia total</h2>
-  <p class="section-sub">Sabemos lo que vale este rol. Aquí está todo sobre la mesa, sin letra chica.</p>
-  <div class="offer-grid">
-    <div class="offer-card need reveal">
-      <h3>⚡ Lo que traemos al proyecto</h3>
-      <ul class="offer-list">
-        <li>Ingeniería en Sistemas o IA con enfoque 100% en resultados de negocio</li>
-        <li>Experiencia real implementando automatizaciones en empresas top de México</li>
-        <li>Mentalidad práctica: no venimos a teorizar, venimos a resolver</li>
+  <h2>Sin letra chica</h2>
+  <p class="sub">Todo sobre la mesa. Así trabajamos.</p>
+  <div class="ogrid">
+    <div class="oc blue">
+      <div class="och">⚡ Lo que traigo a tu proyecto</div>
+      <ul class="oli">
+        <li>Ingeniería en Sistemas o IA enfocada en resultados de negocio reales</li>
+        <li>Track record documentado en OXXO, BanCoppel, Ford y AXA</li>
+        <li>Mentalidad 100% práctica: vengo a resolver, no a teorizar</li>
         <li>Comunicación fluida con dirección, operaciones y equipos técnicos</li>
-        <li>Track record probado en OXXO, BanCoppel, Ford Motor y AXA</li>
+        <li>Dominio del stack de IA más relevante del mercado actual</li>
         <li>Capacidad de cuestionar el "así siempre se ha hecho" con datos</li>
-        <li>Gestión con Azure DevOps, Scrum y OKRs</li>
+        <li>Gestión de proyectos con Azure DevOps, Scrum y OKRs</li>
       </ul>
     </div>
-    <div class="offer-card give reveal d1">
-      <h3>✅ Lo que el proyecto ofrece</h3>
-      <ul class="offer-list">
-        <li>Esquema económico de acuerdo con la magnitud del proyecto + prestaciones</li>
-        <li>Estructura flexible: consultoría, proyecto o rol estratégico interno</li>
-        <li>Estabilidad — buscamos relaciones de mediano y largo plazo</li>
+    <div class="oc grn">
+      <div class="och">✅ Lo que el proyecto ofrece</div>
+      <ul class="oli">
+        <li>Esquema económico justo y acorde a la magnitud del proyecto</li>
+        <li>Modalidad flexible: consultoría puntual, proyecto o rol estratégico</li>
         <li>Visibilidad directa ante dirección general y C-Suite</li>
-        <li>Autonomía real para proponer, crear e implementar sin burocracia</li>
-        <li>Impacto medible y documentado desde los primeros 90 días</li>
+        <li>Autonomía real para proponer, crear e implementar</li>
+        <li>Relación de largo plazo — no somos "project to project"</li>
+        <li>Impacto documentado y medible desde los primeros 90 días</li>
         <li>Diagnóstico inicial <strong style="color:var(--green);">completamente sin costo</strong></li>
       </ul>
     </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="wrap-sm">
-  <div style="text-align:center;margin-bottom:3rem;">
-    <div class="eyebrow" style="justify-content:center;">Preguntas frecuentes</div>
+<!-- FAQ -->
+<div class="sdiv"><span>Preguntas frecuentes</span></div>
+<div class="wrapsm">
+  <div style="text-align:center;margin-bottom:2.75rem;">
+    <div class="eyebrow" style="justify-content:center;">FAQ</div>
     <h2>Todo lo que necesitas saber</h2>
   </div>
-  <div class="reveal">
-    <div class="faq-item">
-      <button class="faq-q">¿Para qué tipo de empresas es este servicio? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Para empresas medianas y grandes que tienen procesos establecidos pero que aún no han aprovechado la IA de forma estructurada. Funciona en retail, banca, manufactura, salud, logística y servicios. Si tienes equipos de más de 20 personas y operaciones repetitivas, ya tienes suficiente donde implementar.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">¿Cuánto tiempo tarda en verse el primer resultado? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Las primeras automatizaciones pueden estar operando en 2 a 4 semanas. Los resultados medibles en ahorro de tiempo o reducción de errores suelen ser visibles dentro de los primeros 60 días. El ROI completo se documenta a los 90 días del inicio.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">¿Necesito saber de tecnología para contratarte? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Para nada. Una de las habilidades clave del AI Pro Master es traducir la tecnología a lenguaje de negocio. Tú hablas de procesos, costos y objetivos — nosotros lo convertimos en soluciones concretas que tu equipo puede operar.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">¿Cómo funciona la sesión de diagnóstico gratuita? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Es una llamada de 45 a 60 minutos por WhatsApp, Zoom o presencial en CDMX. Exploraremos tus áreas de mayor fricción, volumen de trabajo manual y objetivos del negocio. Al final recibes un mini-mapa de oportunidades de IA sin costo ni compromiso.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">¿Trabajas solo o con un equipo? <span class="faq-icon">+</span></button>
-      <div class="faq-a">Dependiendo del alcance, puedo operar de forma individual como consultor estratégico, o armar un equipo especializado para proyectos de mayor envergadura. En ambos casos soy el punto de contacto y responsable directo de los resultados.</div>
-    </div>
+  <div class="faqitem">
+    <button class="faqq">¿Para qué tamaño de empresa es este servicio? <span class="faqi">+</span></button>
+    <div class="faqa">Para empresas medianas y grandes con equipos de 20+ personas y procesos establecidos. Funciona en retail, banca, manufactura, salud, logística y servicios. Si tienes operaciones repetitivas y quieres reducir costos con IA, ya tienes suficiente terreno de trabajo.</div>
+  </div>
+  <div class="faqitem">
+    <button class="faqq">¿Cuánto tiempo tarda en verse el primer resultado? <span class="faqi">+</span></button>
+    <div class="faqa">Las primeras automatizaciones pueden estar operando en 2 a 4 semanas. Resultados medibles en ahorro de tiempo o reducción de errores suelen aparecer dentro de los primeros 60 días. El ROI completo se documenta a los 90 días del inicio del proyecto.</div>
+  </div>
+  <div class="faqitem">
+    <button class="faqq">¿Necesito saber de tecnología para contratarte? <span class="faqi">+</span></button>
+    <div class="faqa">Para nada. Mi trabajo es precisamente traducir la IA a lenguaje de negocio. Tú me hablas de procesos, costos y objetivos — yo lo convierto en soluciones concretas que tu equipo puede operar sin ser técnico.</div>
+  </div>
+  <div class="faqitem">
+    <button class="faqq">¿Cómo funciona la sesión de diagnóstico gratuita? <span class="faqi">+</span></button>
+    <div class="faqa">Es una sesión de 45 a 60 minutos por WhatsApp, Zoom o presencial en CDMX. Exploramos tus áreas de mayor fricción, volumen de trabajo manual y objetivos de negocio. Al final recibes un mini-mapa de oportunidades de IA — sin costo y sin compromiso.</div>
+  </div>
+  <div class="faqitem">
+    <button class="faqq">¿Trabajas solo o con equipo? <span class="faqi">+</span></button>
+    <div class="faqa">Dependiendo del alcance puedo operar de forma individual como consultor estratégico, o armar un equipo especializado para proyectos más grandes. En ambos casos soy el punto de contacto y el responsable directo de los resultados.</div>
+  </div>
+  <div class="faqitem">
+    <button class="faqq">¿Cuál es la diferencia con un consultor de IA normal? <span class="faqi">+</span></button>
+    <div class="faqa">La mayoría de consultores entrega un reporte o un taller y desaparece. Yo me quedo hasta que la herramienta está implementada, tu equipo la usa con confianza y los números lo demuestran. No cobro por entregables — cobro por resultados.</div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="wrap" style="padding-bottom:3rem;">
-  <div class="final-cta reveal">
-    <div class="final-cta-inner">
-      <div class="fcta-chip">¿Tu empresa está lista?</div>
-      <h2>Primera sesión de diagnóstico<br><span style="background:linear-gradient(90deg,var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">completamente sin costo</span></h2>
-      <p>Cuéntame cómo opera tu empresa. Te digo exactamente cómo y dónde entra la IA — sin rodeos, sin venderte humo, sin perder tu tiempo.</p>
-      <div class="cta-btns">
-        <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito%20de%20IA%20para%20mi%20empresa" target="_blank" class="btn btn-gold">💬 Agendar diagnóstico gratis</a>
-        <a href="https://lpdigitalconsulting.github.io/lpdigital/" class="btn btn-ghost">Ver perfil completo</a>
+<!-- FINAL CTA -->
+<div class="sdiv"><span>Siguiente paso</span></div>
+<div class="wrap" style="padding-bottom:3.5rem;">
+  <div class="fcta">
+    <div class="fctai">
+      <div class="fchip">¿Tu empresa está lista para la IA?</div>
+      <h2>Primera sesión de diagnóstico<br><span style="background:linear-gradient(100deg,var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">completamente sin costo</span></h2>
+      <p>Cuéntame cómo opera tu empresa. Te digo exactamente cómo y dónde entra la IA — sin rodeos, sin venderte humo y sin perder tu tiempo.</p>
+      <div class="ctabtns">
+        <a href="https://wa.me/5215532779717?text=Hola%20Leonardo%2C%20quiero%20el%20diagn%C3%B3stico%20gratuito%20de%20IA%20para%20mi%20empresa" target="_blank" class="btn btng">💬 Agendar diagnóstico gratis</a>
+        <a href="https://lpdigitalconsulting.github.io/lpdigital/" class="btn btno">Ver perfil completo</a>
       </div>
-      <div class="contact-links">
-        <a href="https://wa.me/5215532779717" target="_blank" class="c-link">💬 WhatsApp</a>
-        <a href="mailto:lperezmorales@outlook.com" class="c-link">📧 Email</a>
-        <a href="tel:5532779717" class="c-link">📞 (55) 32 77 97 17</a>
-        <a href="https://www.linkedin.com/in/leonardo-alexander-pérez-morales-b9332b158" target="_blank" class="c-link">🔗 LinkedIn</a>
+      <div class="clinks">
+        <a href="https://wa.me/5215532779717" target="_blank" class="cl">💬 WhatsApp</a>
+        <a href="mailto:lperezmorales@outlook.com" class="cl">📧 Email</a>
+        <a href="tel:5532779717" class="cl">📞 (55) 32 77 97 17</a>
+        <a href="https://www.linkedin.com/in/leonardo-alexander-pérez-morales-b9332b158" target="_blank" class="cl">🔗 LinkedIn</a>
       </div>
     </div>
   </div>
@@ -600,76 +644,153 @@ footer a:hover{color:var(--cyan);}
 
 <footer>
   © 2026 <a href="https://lpdigitalconsulting.github.io/lpdigital/">Leonardo Alexander Pérez Morales</a> · LP Digital Consulting · Ciudad de México<br>
-  <span style="opacity:.45;font-size:.62rem;margin-top:.35rem;display:block;">Consultoría en IA · Adaptable a industria, tamaño y presupuesto de tu empresa.</span>
+  <span style="opacity:.4;font-size:.6rem;margin-top:.3rem;display:block;">Consultoría en IA · Adaptable a industria, tamaño y presupuesto.</span>
 </footer>
 
 <script>
-/* ── CANVAS: PARTICLES + HEX GRID + STREAMS ── */
+/* ══ CANVAS: PARTÍCULAS + HEX GRID + STREAMS ══ */
 (function(){
-  var canvas=document.getElementById('canvas');
-  if(!canvas)return;
-  var ctx=canvas.getContext('2d');
-  var W,H,particles=[],streams=[],hexPts=[];
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;buildHex();}
-  function buildHex(){
-    hexPts=[];
-    var sp=100;
-    for(var hx=0;hx*sp<W+sp;hx++){
-      for(var hy=0;hy*86<H+86;hy++){
-        hexPts.push({x:hx*sp+(hy%2)*50,y:hy*86,ph:Math.random()*Math.PI*2,spd:Math.random()*.006+.002});
+  var cvs=document.getElementById('canvas');
+  if(!cvs)return;
+  var ctx=cvs.getContext('2d');
+  var W,H,pts=[],streams=[],hex=[];
+
+  function resize(){
+    W=cvs.width=window.innerWidth;
+    H=cvs.height=window.innerHeight;
+    hex=[];
+    for(var hx=0;hx*95<W+95;hx++){
+      for(var hy=0;hy*82<H+82;hy++){
+        hex.push({x:hx*95+(hy%2)*47,y:hy*82,ph:Math.random()*Math.PI*2,sp:Math.random()*.005+.002});
       }
     }
   }
-  resize();window.addEventListener('resize',resize);
+  resize();
+  window.addEventListener('resize',resize);
+
   for(var i=0;i<100;i++){
-    particles.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.4,a:Math.random()*.4+.06,color:Math.random()>.6?'0,229,255':Math.random()>.5?'240,165,0':'0,229,165'});
+    pts.push({
+      x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,
+      vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,
+      r:Math.random()*1.5+.4,a:Math.random()*.38+.06,
+      col:Math.random()>.6?'0,229,255':Math.random()>.5?'240,165,0':'0,229,165'
+    });
   }
-  function spawnStream(){streams.push({x:Math.random()*W,y:-100,spd:Math.random()*2.5+.8,len:Math.random()*130+60,a:Math.random()*.2+.04,gold:Math.random()>.65});}
-  setInterval(spawnStream,550);
+
+  setInterval(function(){
+    streams.push({x:Math.random()*W,y:-110,spd:Math.random()*2.2+.8,len:Math.random()*120+55,a:Math.random()*.18+.04,gold:Math.random()>.65});
+  },500);
+
   function frame(){
     ctx.clearRect(0,0,W,H);
-    // hex dots
-    hexPts.forEach(function(h){h.ph+=h.spd;var a=(Math.sin(h.ph)*.5+.5)*.05;ctx.beginPath();ctx.arc(h.x,h.y,1.5,0,Math.PI*2);ctx.fillStyle='rgba(0,229,255,'+a+')';ctx.fill();});
-    // streams
-    streams=streams.filter(function(s){return s.y<H+150;});
-    streams.forEach(function(s){s.y+=s.spd;var g=ctx.createLinearGradient(s.x,s.y-s.len,s.x,s.y);g.addColorStop(0,'transparent');g.addColorStop(1,s.gold?'rgba(240,165,0,'+s.a+')':'rgba(0,229,255,'+s.a+')');ctx.beginPath();ctx.strokeStyle=g;ctx.lineWidth=1;ctx.moveTo(s.x,s.y-s.len);ctx.lineTo(s.x,s.y);ctx.stroke();});
-    // connections
-    for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<140){ctx.beginPath();ctx.strokeStyle='rgba(0,229,255,'+(1-dist/140)*.08+')';ctx.lineWidth=.5;ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}
-    // particles
-    particles.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba('+p.color+','+p.a+')';ctx.fill();});
+
+    // Hex grid
+    for(var h=0;h<hex.length;h++){
+      hex[h].ph+=hex[h].sp;
+      var ha=(Math.sin(hex[h].ph)*.5+.5)*.048;
+      ctx.beginPath();ctx.arc(hex[h].x,hex[h].y,1.4,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,229,255,'+ha+')';ctx.fill();
+    }
+
+    // Streams
+    streams=streams.filter(function(s){return s.y<H+160;});
+    for(var s=0;s<streams.length;s++){
+      streams[s].y+=streams[s].spd;
+      var g=ctx.createLinearGradient(streams[s].x,streams[s].y-streams[s].len,streams[s].x,streams[s].y);
+      g.addColorStop(0,'transparent');
+      g.addColorStop(1,streams[s].gold?'rgba(240,165,0,'+streams[s].a+')':'rgba(0,229,255,'+streams[s].a+')');
+      ctx.beginPath();ctx.strokeStyle=g;ctx.lineWidth=1;
+      ctx.moveTo(streams[s].x,streams[s].y-streams[s].len);ctx.lineTo(streams[s].x,streams[s].y);ctx.stroke();
+    }
+
+    // Connections between particles
+    for(var i=0;i<pts.length;i++){
+      for(var j=i+1;j<pts.length;j++){
+        var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<135){
+          ctx.beginPath();
+          ctx.strokeStyle='rgba(0,229,255,'+(1-d/135)*.075+')';
+          ctx.lineWidth=.5;
+          ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();
+        }
+      }
+    }
+
+    // Particles
+    for(var i=0;i<pts.length;i++){
+      pts[i].x+=pts[i].vx;pts[i].y+=pts[i].vy;
+      if(pts[i].x<0||pts[i].x>W)pts[i].vx*=-1;
+      if(pts[i].y<0||pts[i].y>H)pts[i].vy*=-1;
+      ctx.beginPath();ctx.arc(pts[i].x,pts[i].y,pts[i].r,0,Math.PI*2);
+      ctx.fillStyle='rgba('+pts[i].col+','+pts[i].a+')';ctx.fill();
+    }
+
     requestAnimationFrame(frame);
   }
   frame();
 })();
 
-/* ── SCROLL REVEAL ── */
-var reveals=document.querySelectorAll('.reveal');
-var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
-reveals.forEach(function(r){io.observe(r);});
-
-/* ── FAQ ── */
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click',function(){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!isOpen)item.classList.add('open');});
+/* ══ FAQ ══ */
+document.querySelectorAll('.faqq').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.closest('.faqitem');
+    var wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faqitem').forEach(function(i){i.classList.remove('open');});
+    if(!wasOpen)item.classList.add('open');
+  });
 });
 
-/* ── ROI BARS ── */
-var barsGo=false;
-var barsObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting&&!barsGo){barsGo=true;document.querySelectorAll('.rbi-fill').forEach(function(bar){var w=bar.getAttribute('data-w');setTimeout(function(){bar.style.transition='width 1.6s cubic-bezier(.34,1.2,.64,1)';bar.style.width=w;},200);});}});
-},{threshold:0.3});
-var roiEl=document.querySelector('.roi-bars');
-if(roiEl)barsObs.observe(roiEl);
+/* ══ ROI BARS — triggered on scroll ══ */
+var barsReady=false;
+function tryBars(){
+  if(barsReady)return;
+  var el=document.getElementById('roibars');
+  if(!el)return;
+  var rect=el.getBoundingClientRect();
+  if(rect.top<window.innerHeight-80){
+    barsReady=true;
+    document.querySelectorAll('.rb-fill').forEach(function(bar,i){
+      var w=bar.getAttribute('data-w');
+      setTimeout(function(){
+        bar.style.transition='width 1.6s cubic-bezier(.34,1.2,.64,1)';
+        bar.style.width=w;
+      },i*120+100);
+    });
+  }
+}
+window.addEventListener('scroll',tryBars,{passive:true});
+tryBars();
 
-/* ── COUNTER ANIMATION ── */
+/* ══ COUNTER ANIMATION ══ */
+var counted={};
 function animCount(el,target,sfx){
-  var start=0,dur=1800,t0=null;
-  function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*target)+(sfx||'');if(p<1)requestAnimationFrame(step);else el.textContent=target+(sfx||'');}
+  var dur=1800,t0=null;
+  function step(ts){
+    if(!t0)t0=ts;
+    var p=Math.min((ts-t0)/dur,1);
+    var e=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(e*target)+(sfx||'');
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target+(sfx||'');
+  }
   requestAnimationFrame(step);
 }
-var cntObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){var el=e.target,txt=el.textContent,num=parseInt(txt),sfx=txt.replace(String(num),'');if(!isNaN(num)){animCount(el,num,sfx);cntObs.unobserve(el);}}});
-},{threshold:.5});
-document.querySelectorAll('.hm-n,.trust-stat').forEach(function(el){cntObs.observe(el);});
+var counterIds={cnt1:{v:120,s:'+'},cnt2:{v:10,s:'+'},cnt3:{v:4,s:''},tr1:{v:5,s:''},tr2:{v:120,s:''},tr3:{v:1,s:''},tr4:{v:20,s:''},tr5:{v:10,s:'+'}};
+function checkCounters(){
+  Object.keys(counterIds).forEach(function(id){
+    if(counted[id])return;
+    var el=document.getElementById(id);
+    if(!el)return;
+    var r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight-60){
+      counted[id]=true;
+      animCount(el,counterIds[id].v,counterIds[id].s);
+    }
+  });
+}
+window.addEventListener('scroll',checkCounters,{passive:true});
+checkCounters();
 </script>
 </body>
 </html>
